@@ -1,0 +1,16 @@
+body {
+	margin:0;
+	padding:0;
+	overflow: hidden;
+}
+canvas {
+	margin:auto;
+}
+
+
+.info_table { 
+	position: relative;
+	background-color: orange;
+	margin: auto;
+	text-align: center;	
+}
