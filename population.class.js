@@ -7,9 +7,8 @@ class population {
 	{
 		this.rockets = [];
 		this.mattingPool = [];
-		this.mutation = 0.01;
 
-		this.populsize = 300;
+		this.populsize = 150;
 		if (!prev)	{
 			this.maxFitness = -1;
 			this.averageFitness = 0;
@@ -49,8 +48,7 @@ class population {
 			let parentB = random(this.mattingPool).dna;
 			let child = parentA.crossover(parentB);
 			let chance = random(0, 1);
-			if (chance <= this.mutation)
-				child.mutation();
+			child.mutation();
 			this.rockets[i] = new Rocket(child);
 		}
 		this.mattingPool = [];

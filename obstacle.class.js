@@ -2,16 +2,25 @@ class Obstacle {
 
 	getPos() { return this.position; }
 
-	constructor(x, y) {
+	constructor(x, y, dir) {
 		this.position = createVector(x, y);
+		this.origin = this.position.copy();
 		this.diameter = 30;
+		this.dir = dir;
+		this.velocity = createVector(2*this.dir, 0);
+	}
+	
+	update() {
+		if (this.position.x >= (this.origin.x + 40) || (this.position.x <= this.origin.x - 40))
+			this.dir *= -1;
+		this.velocity.x *= this.dir;
+		this.position.add(this.velocity);
 	}
 
 	show() {
 		push();
 		fill(255,0,0);
-		translate(this.position.x, this.position.y);
-		ellipse(0, 0, this.diameter);
+		ellipse(this.position.x, this.position.y, this.diameter);
 		fill(255);
 		pop();
 	}
